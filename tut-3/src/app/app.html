@@ -1,0 +1,50 @@
+<form [formGroup]="userForm" (ngSubmit)="getFormData()" autocomplete="off">
+  <div class="">
+    <label for="name">name</label>
+    <input type="text" formControlName="name" id="name" autocomplete="off">
+
+    @if(userForm.get('name')?.touched && userForm.get('name')?.invalid){
+      <p [ngStyle]="{'color':'red'}">Name is required</p>
+    }
+
+  </div>
+
+  <div class="">
+    <label for="email">email</label>
+    <input type="email" formControlName="email" id="email" autocomplete="off">
+    @if(userForm.get('email')?.touched && userForm.get('email')?.invalid){
+      <p [ngStyle]="{'color':'red'}">email is required</p>
+    }
+  </div>
+
+  <div class="">
+    <label for="password">password</label>
+    <input type="password" formControlName="password" id="password" autocomplete="new-password">
+     @if(userForm.get('password')?.touched && userForm.get('password')?.invalid){
+      <p [ngStyle]="{'color':'red'}">password is required</p>
+    }
+  </div>
+
+  <div class="">
+    <label for="confirmPassword">confirmPassword</label>
+    <input type="password" formControlName="confirmPassword" id="confirmPassword" autocomplete="new-password">
+    @if(userForm.get('confirmPassword')?.touched && userForm.get('confirmPassword')?.invalid){
+      <p [ngStyle]="{'color':'red'}">confirmPassword is required</p>
+    }
+  </div>
+
+  @if(userForm.errors?.['passwordMismatch']){
+    <!-- 
+    hamne form lelal par validation lagaya 
+    isiliye ham yaha par form par error ko check kar rahe h .
+    na ki individual field par.
+    -->
+    <p [ngStyle]="{'color':'red'}">passwordMismatch enter correct password</p>
+  }
+
+  <div class="">
+    <button>submit</button>
+  </div>
+</form>
+
+<router-outlet />
