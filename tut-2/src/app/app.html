@@ -1,0 +1,53 @@
+<div class="my-form">
+  <form [formGroup]="userForm" (ngSubmit)="getFormData()" autocomplete="off">
+
+    <div class="">
+      <label for="name">{{'name'|uppercase}}</label>
+      <input type="text" id="name" formControlName="name" autocomplete="off" >
+
+      @if(userForm.get('name')?.touched && userForm.get('name')?.invalid){
+        <p [ngStyle]="{'color':'red'}">Name is required field.</p>
+
+        @if(userForm.get('name')?.errors?.['minlength']){
+          <p [ngStyle]="{'color':'red'}">Name must be 6 character long.</p>
+        }
+      }
+
+    </div>
+
+    <div class="">
+      <label for="email">{{'email'|uppercase}}</label>
+      <input type="email" id="email" formControlName="email" autocomplete="off" >
+
+      @if(userForm.get('email')?.touched && userForm.get('email')?.invalid){
+        <p [ngStyle]="{'color':'red'}">Email is required field.</p>
+
+        @if(userForm.get('email')?.errors?.['email']){
+          <p [ngStyle]="{'color':'red'}">Please enter valid email.</p>
+        }
+      }
+
+    </div>
+
+    <div class="">
+      <label for="password">{{'password'|uppercase}}</label>
+      <input type="password" id="password" formControlName="password" autocomplete="new-password" >
+
+      @if(userForm.get('password')?.touched && userForm.get('password')?.invalid){
+        <p [ngStyle]="{'color':'red'}">password is required field.</p>
+
+        @if(userForm.get('password')?.errors?.['minlength']){
+          <p [ngStyle]="{'color':'red'}">Please enter valid email.</p>
+        }
+      }
+    </div>
+
+    <div class="">
+      <button>Submit</button>
+    </div>
+  </form>
+</div>
+
+
+
+<router-outlet />
