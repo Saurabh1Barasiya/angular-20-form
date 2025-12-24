@@ -1,0 +1,70 @@
+<div class="">
+  <form [formGroup]="userForm" autocomplete="off" (ngSubmit)="getData()">
+    <div formGroupName="person">  
+      <!-- nested object hai isiliye formControlName="person" ka use kiya h  -->
+
+      <div class="">
+        <label for="name">Name</label>
+        <input type="text" id="name" formControlName="name" autocomplete="off">
+
+        @if(userForm.get('person.name')?.touched && userForm.get('person.name')?.invalid){
+          <!-- specific error show kara dunga haya se. -->
+            @if(userForm.get('person.name')?.errors?.['required']){
+              <p [ngStyle]="{'color':'red'}">Name field is required</p>
+            }
+
+             @if(userForm.get('person.name')?.errors?.['minlength']){
+              <p [ngStyle]="{'color':'red'}">Name must be 6 character long.</p>
+            }
+        }
+      </div>
+
+      <div class="">
+        <label for="email">Email</label>
+        <input type="text" id="email" formControlName="email" autocomplete="off">
+
+        @if(userForm.get('person.email')?.touched && userForm.get('person.email')?.invalid){
+          @if(userForm.get('person.email')?.errors?.['required']){
+           <p [ngStyle]="{'color':'red'}">Email field is required</p>
+          }
+
+          @if(userForm.get('person.email')?.errors?.['email']){
+              <p [ngStyle]="{'color':'red'}">please enter valid Email</p>
+            }
+        }
+      </div>
+
+    </div>
+
+    <div formGroupName="security">
+      <div class="">
+        <label for="password">password</label>
+        <input type="password" id="password" formControlName="password" autocomplete="new-password">
+        @if(userForm.get('security.password')?.touched && userForm.get('security.password')?.invalid){
+          @if(userForm.get('security.password')?.errors?.['required']){
+            <p [ngStyle]="{'color':'red'}">password field is required</p>
+          }
+        }
+      </div>
+
+      <div class="">
+        <label for="confirmPassword">confirmPassword</label>
+        <input type="password" id="confirmPassword"formControlName="confirmPassword" autocomplete="new-password">
+
+        @if(userForm.get('security.confirmPassword')?.touched && userForm.get('security.confirmPassword')?.invalid){
+          @if(userForm.get('security.confirmPassword')?.errors?.['required']){
+            <p [ngStyle]="{'color':'red'}">confirm Password is required</p>
+          }
+        }
+      </div>
+    </div>
+
+
+    <div class="">
+      <button>Submit</button>
+    </div>
+
+  </form>
+</div>
+
+<router-outlet />
