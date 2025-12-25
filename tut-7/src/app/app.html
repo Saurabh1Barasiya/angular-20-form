@@ -1,0 +1,34 @@
+<div class="">
+  <form [formGroup]="userForm" (ngSubmit)="getFormData()">
+    <div class="">
+      <label for="name">{{'name'|uppercase}}</label>
+      <input type="text" formControlName="name" id="name" placeholder="enter username">
+      @if(userForm.get('name')?.touched && userForm.get('name')?.invalid){
+        @if(userForm.get('name')?.errors?.['required']){
+          <p [ngStyle]="{'color':'red'}">Name field is required</p>
+        }
+      }
+    </div>
+
+    <div class="" formArrayName="userSkills">
+      @for(skill of userSkills.controls;track $index){
+        <input type="text" [formControlName]="$index">
+        <button (click)="removeSkills($index)">remove skills</button>
+      }
+      <button (click)="addSkills()">Add Skills</button>
+    </div>
+
+    @if (userSkills.touched && userSkills.errors?.['skillRequired']) {
+      <p style="color:red">
+        At least one skill must be filled
+      </p>
+    }
+
+    <div class="">
+      <button>submit</button>
+    </div>
+
+  </form>
+</div>
+
+<router-outlet />
