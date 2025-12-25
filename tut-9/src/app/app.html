@@ -1,0 +1,11 @@
+<form [formGroup]="userForm" (ngSubmit)="getData()">
+  <input type="text" formControlName="name">
+  <input type="email" formControlName="email">
+  <input type="text" formControlName="address">
+  <button>submit</button>
+</form>
+
+<button (click)="setName()">set default name</button>
+<button (click)="setEmail()">set default email</button>
+<button (click)="setAddress()">set default address</button>
+<router-outlet />
