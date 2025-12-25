@@ -1,0 +1,11 @@
+<form [formGroup]="userForm">
+  <input type="text" formControlName="name" placeholder="enter name">
+  <input type="email" formControlName="email" placeholder="enter email">
+  <input type="text" formControlName="address" placeholder="enter address">
+
+  <button>submit</button>
+</form>
+
+<button (click)="setDefault()">set Defaul Value</button>
+
+<router-outlet />
