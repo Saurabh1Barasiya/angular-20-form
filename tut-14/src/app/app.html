@@ -1,0 +1,28 @@
+<form [formGroup]="userForm" (ngSubmit)="getFormData()">
+  <div class="">
+    enter name<input type="text" formControlName="name">
+
+    @if(userForm.get('name')?.touched && userForm.get('name')?.invalid){
+      <p [ngStyle]="{'color':'red'}">name is required</p>
+    }
+
+  </div>
+
+  <div class="">
+    <span>select country</span>
+    <select formControlName="country">
+      <option value="">---</option>
+      <option value="india">India</option>
+      <option value="USA">USA</option>
+      <option value="Srilanka">Srilanka</option>
+    </select>
+
+    @if(userForm.get('country')?.touched && userForm.get('country')?.invalid){
+      <p [ngStyle]="{'color':'red'}">country is required</p>
+    }
+  </div>
+
+  <button>submit</button>
+
+</form>
+<router-outlet />
