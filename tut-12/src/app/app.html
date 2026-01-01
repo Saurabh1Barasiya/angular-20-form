@@ -1,0 +1,21 @@
+<form [formGroup]="userForm" (ngSubmit)="getFormData()">
+  <div class="">
+    <label for="name">name</label>
+    <input type="text" formControlName="name">
+  </div>
+
+  <div class="">
+    <input type="radio" formControlName="gender" id="gender" value="male"> Male
+    <input type="radio" formControlName="gender" id="gender" value="female"> Female
+  </div>
+
+  <div class="" formGroupName="hobbies">
+    <input type="checkbox" formControlName="cricket" id="cricket"> Cricket
+    <input type="checkbox" formControlName="movie" id="movie"> Movie
+    <input type="checkbox" formControlName="reading" id="reading"> Reading
+  </div>
+
+  <button type="submit">submit</button>
+</form>
+
+<router-outlet />
