@@ -1,0 +1,30 @@
+<form [formGroup]="userForm" (ngSubmit)="getFormData()">
+
+  <div class="">
+    <input type="text" formControlName="name" id="name">
+    @if(userForm.get('name')?.touched && userForm.get('name')?.invalid){
+      <p [ngStyle]="{'color':'red'}">name is required</p>
+    }
+
+  </div>
+
+  <div class="">Chose gender
+    <input type="radio" formControlName="gender" id="gender" value="male"> Male
+    <input type="radio" formControlName="gender" id="gender" value="female"> Female
+
+    @if(userForm.get('gender')?.touched && userForm.get('gender')?.invalid){
+      <p [ngStyle]="{'color':'red'}">gender is required</p>
+    }
+  </div>
+  
+  <div class="">
+    <input type="checkbox" formControlName="agree"> agree
+    @if(userForm.get('agree')?.touched && userForm.get('agree')?.invalid){
+      <p [ngStyle]="{'color':'red'}">agree is required</p>
+    }
+  </div>
+
+  <button type="submit">submit</button>
+</form>
+
+<router-outlet />
