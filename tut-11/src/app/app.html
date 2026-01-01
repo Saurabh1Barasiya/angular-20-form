@@ -1,0 +1,17 @@
+<form [formGroup]="userForm" (ngSubmit)="getFromData()">
+  <label for="name">name</label>
+  <input type="text" formControlName="name" placeholder="enter your name">
+
+  <div class="">
+
+    <input type="radio" formControlName="gender" value="male" [checked]="true"> Male
+    <input type="radio" formControlName="gender" value="female"> Female
+    <input type="radio" formControlName="gender" value="others"> Others
+
+  </div>
+
+  <input type="checkbox" formControlName="agree" id="agree" checked> I agree
+  <button type="submit">submit</button>
+</form>
+
+<router-outlet />
